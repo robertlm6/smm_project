@@ -12,6 +12,8 @@ import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,6 +21,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class Lienzo extends javax.swing.JPanel {
     private Point pressedPoint = null;
+    private List<Shape> vShape = new ArrayList();
     private Shape forma = new Line2D.Float();
     private HerramientaDibujo herramienta = HerramientaDibujo.LINE;
     private Color color = Color.BLACK;
@@ -36,10 +39,10 @@ public class Lienzo extends javax.swing.JPanel {
         super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         
-        if (forma != null) {
-            g2d.setPaint(color);
-            if (relleno) g2d.fill(forma);
-            g2d.draw(forma);
+        g2d.setPaint(color);
+        for(Shape s: vShape) {
+            if (relleno) g2d.fill(s);
+            g2d.draw(s);
         }
     }
     
@@ -126,6 +129,7 @@ public class Lienzo extends javax.swing.JPanel {
                 this.forma = new Ellipse2D.Float();
                 break;
         }
+        this.vShape.add(forma);
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
