@@ -42,6 +42,11 @@ public class Lienzo extends javax.swing.JPanel {
             g2d.draw(forma);
         }
     }
+    
+    public void limpiarLienzo() {
+        this.forma = new Line2D.Float();
+        this.repaint();
+    }
 
     public Shape getForma() {
         return forma;

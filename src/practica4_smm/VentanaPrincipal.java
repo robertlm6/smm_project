@@ -310,7 +310,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        //this.lienzo1.setForma(null);
+        this.lienzo1.limpiarLienzo();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     
