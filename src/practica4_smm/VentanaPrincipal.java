@@ -38,6 +38,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton10 = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -97,6 +98,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jToggleButton3);
+
+        buttonGroup1.add(jToggleButton10);
+        jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/practica4_smm/Iconos/seleccion.png"))); // NOI18N
+        jToggleButton10.setFocusable(false);
+        jToggleButton10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton10.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton10ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jToggleButton10);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
@@ -269,16 +282,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         this.lienzo1.setHerramienta(HerramientaDibujo.LINE);
         this.jLabel1.setText(HerramientaDibujo.LINE.toString());
+        this.lienzo1.setMover(false);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         this.lienzo1.setHerramienta(HerramientaDibujo.RECTANGLE);
         this.jLabel1.setText(HerramientaDibujo.RECTANGLE.toString());
+        this.lienzo1.setMover(false);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         this.lienzo1.setHerramienta(HerramientaDibujo.ELLIPSE);
         this.jLabel1.setText(HerramientaDibujo.ELLIPSE.toString());
+        this.lienzo1.setMover(false);
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
@@ -313,6 +329,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.lienzo1.limpiarLienzo();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
+        this.lienzo1.setMover(true);
+    }//GEN-LAST:event_jToggleButton10ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -330,6 +350,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
