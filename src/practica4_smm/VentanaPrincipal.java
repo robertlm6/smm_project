@@ -38,7 +38,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton14 = new javax.swing.JToggleButton();
         jToggleButton10 = new javax.swing.JToggleButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        jToggleButton11 = new javax.swing.JToggleButton();
+        jToggleButton12 = new javax.swing.JToggleButton();
+        jToggleButton13 = new javax.swing.JToggleButton();
+        jSlider1 = new javax.swing.JSlider();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -99,6 +105,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jToolBar1.add(jToggleButton3);
 
+        jToggleButton14.setText("jToggleButton14");
+        jToggleButton14.setFocusable(false);
+        jToggleButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton14);
+
         buttonGroup1.add(jToggleButton10);
         jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/practica4_smm/Iconos/seleccion.png"))); // NOI18N
         jToggleButton10.setFocusable(false);
@@ -110,6 +122,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jToggleButton10);
+        jToolBar1.add(jSeparator2);
+
+        jToggleButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/practica4_smm/Iconos/rellenar.png"))); // NOI18N
+        jToggleButton11.setFocusable(false);
+        jToggleButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton11);
+
+        jToggleButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/practica4_smm/Iconos/alisar.png"))); // NOI18N
+        jToggleButton12.setFocusable(false);
+        jToggleButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton12);
+
+        jToggleButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/practica4_smm/Iconos/transparencia.png"))); // NOI18N
+        jToggleButton13.setFocusable(false);
+        jToggleButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jToggleButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jToggleButton13);
+
+        jSlider1.setMaximumSize(new java.awt.Dimension(1000, 20));
+        jSlider1.setPreferredSize(new java.awt.Dimension(50, 20));
+        jToolBar1.add(jSlider1);
 
         getContentPane().add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
@@ -219,11 +254,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lienzo1.setLayout(lienzo1Layout);
         lienzo1Layout.setHorizontalGroup(
             lienzo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGap(0, 472, Short.MAX_VALUE)
         );
         lienzo1Layout.setVerticalGroup(
             lienzo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGap(0, 157, Short.MAX_VALUE)
         );
 
         getContentPane().add(lienzo1, java.awt.BorderLayout.CENTER);
@@ -349,8 +384,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
+    private javax.swing.JToggleButton jToggleButton11;
+    private javax.swing.JToggleButton jToggleButton12;
+    private javax.swing.JToggleButton jToggleButton13;
+    private javax.swing.JToggleButton jToggleButton14;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;

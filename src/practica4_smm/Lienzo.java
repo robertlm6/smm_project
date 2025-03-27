@@ -161,25 +161,28 @@ public class Lienzo extends javax.swing.JPanel {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         if (mover) {
             if (this.forma != null && forma instanceof Rectangle2D) {
-                ((Rectangle2D)forma).setFrame(evt.getX(), evt.getY(), ((Rectangle2D)forma).getWidth(), ((Rectangle2D)forma).getHeight());
+                ((Rectangle2D)forma).setFrame(evt.getX(), evt.getY(), 
+                                           ((Rectangle2D)forma).getWidth(), 
+                                           ((Rectangle2D)forma).getHeight());
             }
             if (this.forma != null && forma instanceof Ellipse2D) {
-                ((Ellipse2D)forma).setFrame(evt.getX(), evt.getY(), ((Ellipse2D)forma).getWidth(), ((Ellipse2D)forma).getHeight());
+                ((Ellipse2D)forma).setFrame(evt.getX(), evt.getY(), 
+                                           ((Ellipse2D)forma).getWidth(), 
+                                           ((Ellipse2D)forma).getHeight());
             }
             if (this.forma != null && forma instanceof MiLinea) {
                 ((MiLinea)forma).setLocation(evt.getPoint());
             }
         } else {
-            switch(herramienta){
-                case HerramientaDibujo.LINE:
-                    ((MiLinea)this.forma).setLine(((MiLinea)forma).getP1(), evt.getPoint());
-                    break;
-                case HerramientaDibujo.RECTANGLE:
-                    ((Rectangle2D)this.forma).setFrameFromDiagonal(this.pressedPoint, evt.getPoint());
-                    break;
-                case HerramientaDibujo.ELLIPSE:
-                    ((Ellipse2D)this.forma).setFrameFromDiagonal(this.pressedPoint, evt.getPoint());
-                    break;
+            if (forma instanceof MiLinea) {
+                ((MiLinea)this.forma).setLine(((MiLinea)forma).getP1(), 
+                                              evt.getPoint());
+            } else if (forma instanceof Rectangle2D) {
+                ((Rectangle2D)this.forma).setFrameFromDiagonal(this.pressedPoint, 
+                                                               evt.getPoint());
+            } else if (forma instanceof Ellipse2D) {
+                ((Ellipse2D)this.forma).setFrameFromDiagonal(this.pressedPoint, 
+                                                             evt.getPoint());
             }
         }
         this.repaint();
