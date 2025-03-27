@@ -8,12 +8,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  *
@@ -22,10 +24,11 @@ import java.util.List;
 public class Lienzo extends javax.swing.JPanel {
     private Point pressedPoint = null;
     private List<Shape> vShape = new ArrayList();
-    private Shape forma = new Line2D.Float();
+    private Shape forma = new MiLinea.Float();
     private HerramientaDibujo herramienta = HerramientaDibujo.LINE;
     private Color color = Color.BLACK;
     private Boolean relleno = false;
+    private Boolean mover = false;
 
     /**
      * Creates new form Lienzo
@@ -47,8 +50,17 @@ public class Lienzo extends javax.swing.JPanel {
     }
     
     public void limpiarLienzo() {
-        this.forma = new Line2D.Float();
+        this.forma = new MiLinea.Float();
         this.repaint();
+    }
+    
+    private Shape getSelectedShape(Point2D p) {
+        List<Shape> reversedList = this.vShape.reversed();
+        for (Shape s: reversedList) {
+            if (s.contains(p)) return s;
+        }
+        
+        return null;
     }
 
     public Shape getForma() {
@@ -83,6 +95,16 @@ public class Lienzo extends javax.swing.JPanel {
         this.relleno = relleno;
     }
 
+    public Boolean getMover() {
+        return mover;
+    }
+
+    public void setMover(Boolean mover) {
+        this.mover = mover;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,9 +138,12 @@ public class Lienzo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        switch(herramienta){
+        if (mover) {
+            this.forma = this.getSelectedShape(evt.getPoint());
+        } else {
+            switch(herramienta){
             case HerramientaDibujo.LINE:
-                this.forma = new Line2D.Float(evt.getPoint(), evt.getPoint());
+                this.forma = new MiLinea(evt.getPoint(), evt.getPoint());
                 break;
             case HerramientaDibujo.RECTANGLE:
                 this.pressedPoint = evt.getPoint();
@@ -128,21 +153,34 @@ public class Lienzo extends javax.swing.JPanel {
                 this.pressedPoint = evt.getPoint();
                 this.forma = new Ellipse2D.Float();
                 break;
+            }
+            this.vShape.add(forma);
         }
-        this.vShape.add(forma);
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        switch(herramienta){
-            case HerramientaDibujo.LINE:
-                ((Line2D)this.forma).setLine(((Line2D)forma).getP1(), evt.getPoint());
-                break;
-            case HerramientaDibujo.RECTANGLE:
-                ((Rectangle2D)this.forma).setFrameFromDiagonal(this.pressedPoint, evt.getPoint());
-                break;
-            case HerramientaDibujo.ELLIPSE:
-                ((Ellipse2D)this.forma).setFrameFromDiagonal(this.pressedPoint, evt.getPoint());
-                break;
+        if (mover) {
+            if (this.forma != null && forma instanceof Rectangle2D) {
+                ((Rectangle2D)forma).setFrame(evt.getX(), evt.getY(), ((Rectangle2D)forma).getWidth(), ((Rectangle2D)forma).getHeight());
+            }
+            if (this.forma != null && forma instanceof Ellipse2D) {
+                ((Ellipse2D)forma).setFrame(evt.getX(), evt.getY(), ((Ellipse2D)forma).getWidth(), ((Ellipse2D)forma).getHeight());
+            }
+            if (this.forma != null && forma instanceof MiLinea) {
+                ((MiLinea)forma).setLocation(evt.getPoint());
+            }
+        } else {
+            switch(herramienta){
+                case HerramientaDibujo.LINE:
+                    ((MiLinea)this.forma).setLine(((MiLinea)forma).getP1(), evt.getPoint());
+                    break;
+                case HerramientaDibujo.RECTANGLE:
+                    ((Rectangle2D)this.forma).setFrameFromDiagonal(this.pressedPoint, evt.getPoint());
+                    break;
+                case HerramientaDibujo.ELLIPSE:
+                    ((Ellipse2D)this.forma).setFrameFromDiagonal(this.pressedPoint, evt.getPoint());
+                    break;
+            }
         }
         this.repaint();
     }//GEN-LAST:event_formMouseDragged
